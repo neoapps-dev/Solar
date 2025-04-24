@@ -1,4 +1,4 @@
-grammar LunarCode;
+grammar Solar;
 
 // Parser rules
 program         : statement+ ;
@@ -6,6 +6,9 @@ program         : statement+ ;
 statement       : assignment     # assignmentStmt
                 | functionDecl   # functionDeclStmt
                 | functionCall   # functionCallStmt
+                | ifElse         # ifElseStmt
+                | whileLoop      # whileLoopStmt
+                | returnStmt     # returnAStmt
                 ;
 
 assignment      : IDENTIFIER '=' expression ;
@@ -21,6 +24,18 @@ argumentList    : expression (',' expression)* ;
 expression      : term (('+'|'-') term)* ;
 
 term            : factor (('*'|'/') factor)* ;
+
+ifElse          : 'if' '(' booleanExpression ')' '{' statement* '}' ('else' '{' statement* '}')?;
+
+whileLoop       : 'while' '(' booleanExpression ')' '{' statement* '}';
+returnStmt      : 'return' expression? ;
+
+booleanExpression
+                : expression (('=='|'!='|'<'|'>'|'<='|'>=') expression)
+                | 'true'
+                | 'false'
+                | '(' booleanExpression ')'
+                ;
 
 factor          : INT
                 | STRING

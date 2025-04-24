@@ -3,7 +3,7 @@ plugins {
     id 'antlr'
 }
 
-group = 'com.rk'
+group = 'dev.neoapps.solar'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -20,15 +20,13 @@ kotlin {
     jvmToolchain(17)
 }
 generateGrammarSource {
-    arguments = ['-visitor', '-package', 'com.rk']
+    arguments = ['-visitor', '-package', 'dev.neoapps.solar']
 }
 
 sourceSets.main {
     java.srcDirs = ['build/generated-src/antlr/main']
 }
 
-
-// Ensure Kotlin compiles after generating ANTLR grammar
 compileKotlin {
     dependsOn generateGrammarSource
 }
@@ -37,7 +35,7 @@ tasks.register('run', JavaExec) {
     group = 'application'
     description = 'Runs the Kotlin application'
     classpath = sourceSets.main.runtimeClasspath
-    main = 'com.rk.MainKt'  // Replace with main class fully qualified name
+    main = 'dev.neoapps.solar.MainKt'
     def rootProjectPath = rootProject.projectDir.absolutePath
     args rootProjectPath
 }

@@ -1,4 +1,4 @@
-package com.rk
+package dev.neoapps.solar
 
 typealias Argument = Any
 data class Function(val name:String, val params:Array<String>,val unlimitedParams:Boolean = false,private val body:(args: Array<Argument>)->Any?) {
@@ -26,6 +26,5 @@ data class Function(val name:String, val params:Array<String>,val unlimitedParam
         Stack.exitFunction()
         return result
     }
-
 
 }

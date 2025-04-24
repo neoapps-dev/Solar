@@ -1,0 +1,22 @@
+// comment
+fun greet(name) {
+    println("Hello, " + name + "!")
+}
+
+greet("Lunar")
+x = 42
+y = 314
+if (x > 40) {
+    println("x is greater than 40")
+} else {
+    println("x is 40 or less")
+}
+
+counter = 0
+while (counter < 5) {
+    println("Counter: " + counter)
+    counter = counter + 1
+}
+
+result = 1 + 20
+println("Result of addition: " + result)

@@ -1,13 +1,12 @@
-package com.rk
+package dev.neoapps.solar
 
 import org.antlr.v4.runtime.*
 import org.antlr.v4.runtime.tree.ParseTree
 import org.antlr.v4.runtime.tree.ParseTreeWalker
 import java.io.File
 
-
 fun main(args: Array<String>) {
-    val file = File("example.lc")
+    val file = File("example.solar")
 
     if (file.exists().not()) {
         println("File ${file.absolutePath} not path")
@@ -23,13 +22,12 @@ fun main(args: Array<String>) {
         e.printStackTrace()
     }
 
-
 }
 
 fun compile(code: String) {
-    val lexer = LunarCodeLexer(CharStreams.fromString(code))
+    val lexer = SolarLexer(CharStreams.fromString(code))
     val tokens = CommonTokenStream(lexer)
-    val parser = LunarCodeParser(tokens)
+    val parser = SolarParser(tokens)
 
     parser.removeErrorListeners()
     parser.addErrorListener(object : BaseErrorListener() {
@@ -45,13 +43,8 @@ fun compile(code: String) {
         }
     })
 
-
-
     val tree: ParseTree = parser.program()
     val listener = Interpreter()
     val walker = ParseTreeWalker()
     walker.walk(listener, tree)
 }
-
-
-
