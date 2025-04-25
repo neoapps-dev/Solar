@@ -3,7 +3,7 @@ fun greet(name) {
     println("Hello, " + name + "!")
 }
 
-greet("Lunar")
+greet("Solar")
 x = 42
 y = 314
 if (x > 40) {
@@ -18,5 +18,5 @@ while (counter < 5) {
     counter = counter + 1
 }
 
-result = 1 + 20
+result = 68 + 1
 println("Result of addition: " + result)
